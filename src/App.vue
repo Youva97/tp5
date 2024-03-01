@@ -7,7 +7,7 @@ import { RouterLink, RouterView } from 'vue-router'
 
     <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Youvastano</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -15,16 +15,16 @@ import { RouterLink, RouterView } from 'vue-router'
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <RouterLink class="nav-link" to="/">Accueil</RouterLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
+              <RouterLink class="nav-link" to="/products/list">Liste des produits</RouterLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <RouterLink class="nav-link" to="/users/list">Liste des utilisateurs</RouterLink>
             </li>
             <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+              <RouterLink class="nav-link" to="/users/list">Liste des types de produits</RouterLink>
             </li>
           </ul>
         </div>
@@ -34,8 +34,6 @@ import { RouterLink, RouterView } from 'vue-router'
       <HelloWorld msg="You did it!" />
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
       </nav>
     </div>
   </header>

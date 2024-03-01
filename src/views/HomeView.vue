@@ -4,6 +4,9 @@
 
 <template>
   <main>
+    <button type="button" class="btn btn-success btn-lg btn-block"><a href="/users/list" class="nav-link badge-light">Liste des utilisateur</a></button>
+    <button type="button" class="btn btn-primary btn-lg btn-block"><a href="/products/list" class="nav-link badge-light">Listes des produits</a></button>
+    <button type="button" class="btn btn-primary btn-lg btn-block"><a href="/types/list" class="nav-link badge-light">Listes des types de produits</a></button>
     <TheWelcome />
   </main>
 </template>
