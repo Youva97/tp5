@@ -1,6 +1,6 @@
 <template>
     <div>
-      <h1>Modification des produits</h1>
+      <h1>Modification des Utilisateurs</h1>
       <form @submit.prevent="saveUser">
         <div class="mb-3">
           <label for="userLastname" class="form-label">Nom de Famille</label>
@@ -20,12 +20,10 @@
     </div>
   </template>
   
-  <script>
+  <script setup>
   import { ref, onMounted } from 'vue';
   import { useRoute, useRouter } from 'vue-router';
-  
-  export default {
-    setup() {
+
       const userId = useRoute().params.id;
       const router = useRouter();
   
@@ -38,7 +36,7 @@
               'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
             }
           });
-          user.value = await response.json();
+          user.value = (await response.json()).data;
       }
   
       async function saveUser() {
@@ -60,7 +58,7 @@
       }
   
       async function deleteUser() {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/User/${userId}`, {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/user/${userId}`, {
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
@@ -68,7 +66,7 @@
             }
           });
           if (response.ok) {
-            router.push('/products/list');
+            router.push('/users/list');
           } else {
             console.error('Failed to delete user');
           }
@@ -77,13 +75,5 @@
       onMounted(async () => {
         await loadUsers();
       });
-  
-      return {
-        user,
-        saveUser,
-        deleteUser
-      };
-    }
-  };
   </script>
   

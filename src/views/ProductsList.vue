@@ -24,11 +24,9 @@
   </div>
 </template>
   
-<script>
+<script setup>
 import { onMounted, ref } from 'vue';
 
-export default {
-  setup() {
     let products = ref([]);
     async function loadProducts() {
       try {
@@ -50,9 +48,6 @@ export default {
       await loadProducts();
     });
 
-    return { products };
-  }
-}
 </script>
   
 <style>

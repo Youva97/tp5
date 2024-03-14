@@ -1,11 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import ProductsList from '../views/ProductsList.vue'
-import ProductsEdit from '../views/ProductEdit.vue'
-import UsersList from '../views/UsersList.vue'
-import UserEdit from '../views/UserEdit.vue'
-import TypesList from '../views/TypesList.vue'
-import TypeEdit from '../views/TypeEdit.vue'
+import { createRouter, createWebHistory } from 'vue-router';
+import HomeView from '../views/HomeView.vue';
+import ProductsList from '../views/ProductsList.vue';
+import ProductsEdit from '../views/ProductEdit.vue';
+import UsersList from '../views/UsersList.vue';
+import UserEdit from '../views/UserEdit.vue';
+import TypesList from '../views/TypesList.vue';
+import TypeEdit from '../views/TypeEdit.vue';
+import CustomersList from '../views/CustomersList.vue';
+import CustomerEdit from '../views/CustomerEdit.vue';
+/* import SigninView from '../views/SigninView.vue'; */
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,7 +53,18 @@ const router = createRouter({
       component: TypeEdit,
       props: true
     },
-
+    {
+      path: '/customers/list',
+      name: 'CustomerList',
+      component: CustomersList,
+      props: true
+    },
+    {
+      path: '/customers/edit/:id',
+      name: 'CustomerEdit',
+      component: CustomerEdit,
+      props: true
+    },
   ]
 })
 

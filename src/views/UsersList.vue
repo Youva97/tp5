@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Liste des utilisateurs</h1>
+    <h1>Liste des Utilisateurs</h1>
     <table class="table table-striped">
       <thead class="thead-dark">
         <tr>
@@ -24,11 +24,9 @@
   </div>
 </template>
   
-  <script>
+  <script setup>
   import { onMounted, ref } from 'vue';
   
-  export default {
-    setup() {
       let users = ref([]);
 
       async function loadUsers() {
@@ -46,9 +44,6 @@
         await loadUsers();
       });
   
-      return { users };
-    }
-  }
   </script>
   
   <style>
