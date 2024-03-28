@@ -1,7 +1,3 @@
-<script setup>
-import { RouterLink, RouterView } from 'vue-router'
-</script>
-
 <template>
   <header>
 
@@ -29,6 +25,12 @@ import { RouterLink, RouterView } from 'vue-router'
             <li class="nav-item">
               <RouterLink class="nav-link" to="/customers/list">Liste des clients</RouterLink>
             </li>
+            <li class="nav-item" v-if="token">
+              <RouterLink class="nav-link" to="/signin">connexion</RouterLink>
+            </li>
+            <li class="nav-item" v-if="!token" @click="signout">
+              <RouterLink class="nav-link" to="/signin">deconnexion</RouterLink>
+            </li>
           </ul>
         </div>
       </div>
@@ -43,5 +45,18 @@ import { RouterLink, RouterView } from 'vue-router'
 
   <RouterView />
 </template>
+
+
+<script setup>
+import { RouterLink, RouterView } from 'vue-router';
+import {useRouter} from 'vue-router';
+
+const router = useRouter();
+
+async function signout() {
+  localStorage.removeItem("token");
+  router.push('/signin'); // Rediriger vers la page de connexion après la déconnexion
+}
+</script>
 
 <style scoped></style>

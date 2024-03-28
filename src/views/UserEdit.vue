@@ -14,6 +14,10 @@
           <label for="userLogin" class="form-label">Login</label>
           <input type="text" class="form-control" id="userLogin" v-model="user.login">
         </div>
+        <div class="mb-3">
+          <label for="userPassword" class="form-label">Mot de passe</label>
+          <input type="password" class="form-control" id="userPassword" v-model="user.password">
+        </div>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
         <button type="button" @click="deleteUser" class="btn btn-danger">Supprimer</button>
       </form>

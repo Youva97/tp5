@@ -12,9 +12,9 @@
       </thead>
       <tbody>
         <tr v-for="product in products" :key="product.id">
-          <td>{{ product.name }}</td>
-          <td>{{ product.priceHt / 100 }}</td>
-          <td>{{ product.type.name }}</td>
+          <td>{{ product.name }} {{ console.log(product.name) }}</td>
+          <td>{{ product.priceHt / 100 }} {{ console.log(product.priceHt) }}</td>
+          <td>{{ product.type.name }} {{ console.log(product.type.name) }}</td>
           <td>
             <router-link :to="'/products/edit/' + product.id" class="btn btn-primary">Éditer</router-link>
           </td>
@@ -26,7 +26,6 @@
   
 <script setup>
 import { onMounted, ref } from 'vue';
-
     let products = ref([]);
     async function loadProducts() {
       try {

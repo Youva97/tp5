@@ -8,7 +8,7 @@ import TypesList from '../views/TypesList.vue';
 import TypeEdit from '../views/TypeEdit.vue';
 import CustomersList from '../views/CustomersList.vue';
 import CustomerEdit from '../views/CustomerEdit.vue';
-/* import SigninView from '../views/SigninView.vue'; */
+import SigninView from '../views/SigninView.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -65,7 +65,25 @@ const router = createRouter({
       component: CustomerEdit,
       props: true
     },
+    {
+      path: '/signin',
+      name: 'SigninView',
+      component: SigninView,
+      props: true
+    },
   ]
 })
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['signin'];
+  const authRequired = !publicPages.includes(to.name);
+  const token = localStorage.getItem('token');
+
+  if (authRequired && !token) {
+    return next('/signin');
+  }
+
+  next();
+});
 
 export default router

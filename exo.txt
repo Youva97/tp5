@@ -1,0 +1,35 @@
+Client, Facture, facture ligne de produit, prix modifiable en fonction de la facture, 
+
+
+#Client
+idClient
+firstname
+lastname
+adresse
+Birthday
+
+
+#Facture
+idFacture
+dateAchat
+prix
+quantity
+idClient(idClient.firstname,idClient.lastname, idClient.adresse) -> #Client
+Total
+
+
+#InvoiceLigne
+idInvoiceLigne
+idProduit(name) -> #Produit
+idFacture
+quantity
+prix
+dateAchat
+
+#Produit
+idProduit
+name
+type
+
+#Type
+name

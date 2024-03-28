@@ -8,6 +8,7 @@
     <button type="button" class="btn btn-primary btn-lg btn-block"><a href="/products/list" class="nav-link badge-light">Listes des Produits</a></button>
     <button type="button" class="btn btn-primary btn-lg btn-block"><a href="/types/list" class="nav-link badge-light">Listes des Types de produits</a></button>
     <button type="button" class="btn btn-primary btn-lg btn-block"><a href="/customers/list" class="nav-link badge-light">Listes des Clients</a></button>
+    <button type="button" class="btn btn-primary btn-lg btn-block" v-if="token"><a href="/signin" class="nav-link badge-light">connexion</a></button>
     <TheWelcome />
   </main>
 </template>
