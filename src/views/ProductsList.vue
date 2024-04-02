@@ -33,7 +33,7 @@ import { onMounted, ref } from 'vue';
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c',
+            'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121',
           }
         });
         const data = await response.json();

@@ -1,14 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router';
-import HomeView from '../views/HomeView.vue';
-import ProductsList from '../views/ProductsList.vue';
-import ProductsEdit from '../views/ProductEdit.vue';
-import UsersList from '../views/UsersList.vue';
-import UserEdit from '../views/UserEdit.vue';
-import TypesList from '../views/TypesList.vue';
-import TypeEdit from '../views/TypeEdit.vue';
-import CustomersList from '../views/CustomersList.vue';
-import CustomerEdit from '../views/CustomerEdit.vue';
-import SigninView from '../views/SigninView.vue';
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
+import ProductsList from '../views/ProductsList.vue'
+import ProductsEdit from '../views/ProductEdit.vue'
+import UsersList from '../views/UsersList.vue'
+import UserEdit from '../views/UserEdit.vue'
+import TypesList from '../views/TypesList.vue'
+import TypeEdit from '../views/TypeEdit.vue'
+import CustomersList from '../views/CustomersList.vue'
+import CustomerEdit from '../views/CustomerEdit.vue'
+import SigninView from '../views/SigninView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -70,11 +70,11 @@ const router = createRouter({
       name: 'SigninView',
       component: SigninView,
       props: true
-    },
+    }
   ]
 })
 
-router.beforeEach((to, from, next) => {
+/* router.beforeEach((to, from, next) => {
   const publicPages = ['signin'];
   const authRequired = !publicPages.includes(to.name);
   const token = localStorage.getItem('token');
@@ -84,6 +84,6 @@ router.beforeEach((to, from, next) => {
   }
 
   next();
-});
+}); */
 
 export default router
