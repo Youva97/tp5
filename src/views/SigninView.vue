@@ -1,5 +1,5 @@
 <template>
-    <div class="signin-form">
+  <div class="signin-form">
     <h2>Se connecter</h2>
     <form @submit.prevent="signin">
       <div class="form-group">
@@ -16,17 +16,22 @@
   </div>
 </template>
 
-
-
 <script setup>
 import { ref } from 'vue';
-import {useRouter} from 'vue-router';
+import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const login = ref('');
 const password = ref('');
+let token = localStorage.getItem("token");
 
 async function signin() {
+  if (token) {
+        // Le token est déjà présent, donc l'utilisateur est déjà connecté
+        alert("Vous êtes déjà connecté.");
+        return;
+    }
+
     let json = await (await fetch(`${import.meta.env.VITE_API_URL}/v1/signin`, {
         method: 'POST',
         headers: {

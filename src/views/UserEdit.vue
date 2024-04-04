@@ -16,7 +16,7 @@
         </div>
         <div class="mb-3">
           <label for="userPassword" class="form-label">Mot de passe</label>
-          <input type="password" class="form-control" id="userPassword" v-model="user.password">
+          <input type="password" autocomplete="new-password" class="form-control" id="userPassword" v-model="user.password">
         </div>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
         <button type="button" @click="deleteUser" class="btn btn-danger">Supprimer</button>
@@ -37,7 +37,7 @@
           const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/users/${userId}`, {
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121'
+              'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
             }
           });
           user.value = (await response.json()).data;
@@ -50,7 +50,7 @@
             method,
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121'
+              'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
             },
             body: JSON.stringify(user.value)
           });
@@ -66,7 +66,7 @@
             method: 'DELETE',
             headers: {
               'Content-Type': 'application/json',
-              'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121'
+              'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
             }
           });
           if (response.ok) {

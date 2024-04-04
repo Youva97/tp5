@@ -74,8 +74,8 @@ const router = createRouter({
   ]
 })
 
-/* router.beforeEach((to, from, next) => {
-  const publicPages = ['signin'];
+router.beforeEach((to, from, next) => {
+  const publicPages = ['SigninView'];
   const authRequired = !publicPages.includes(to.name);
   const token = localStorage.getItem('token');
 
@@ -84,6 +84,6 @@ const router = createRouter({
   }
 
   next();
-}); */
+});
 
 export default router

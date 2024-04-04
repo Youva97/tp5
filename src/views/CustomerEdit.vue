@@ -49,7 +49,7 @@ async function loadCustomers() {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/customers/${customerId}`, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121'
+      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
     }
   });
   customer.value = (await response.json()).data;
@@ -62,7 +62,7 @@ async function saveCustomer() {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121'
+      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
     },
     body: JSON.stringify(customer.value)
   });
@@ -78,7 +78,7 @@ async function deleteCustomer() {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121'
+      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
     }
   });
   if (response.ok) {

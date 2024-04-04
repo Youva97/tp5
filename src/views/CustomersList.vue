@@ -48,7 +48,7 @@ async function loadCustomers() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121',
+      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c',
     }
   })).json();
   customers.value = json.data;
@@ -61,7 +61,7 @@ async function loadInvoices() {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'fee47481-28eb-4f46-b238-73ab82794121',
+      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c',
     }
   })).json();
   invoices.value = json.data;
