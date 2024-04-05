@@ -32,10 +32,12 @@ async function signin() {
         return;
     }
 
-    let json = await (await fetch(`${import.meta.env.VITE_API_URL}/v1/signin`, {
+    console.log(password.value);
+
+    const json = await (await fetch(`${import.meta.env.VITE_API_URL}/v1/signin`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json',
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
             login: login.value,
@@ -50,6 +52,7 @@ async function signin() {
         localStorage.setItem('token', json.data.token);
         router.push('/');
     }
+    console.log(token);
 }
 
 </script>
