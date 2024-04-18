@@ -1,32 +1,7 @@
-<template>
-  <div>
-    <h1>Liste des types de produits</h1>
-    <table class="table table-striped">
-      <thead class="thead-dark">
-        <tr>
-          <th scope="col">Nom</th>
-          <th scope="col">Nombre de Produits</th>
-          <th scope="col">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="type in types" :key="type.id">
-          <td>{{ type.name }}</td>
-          <td>{{ getProductCount(type.id) }}</td>
-          <td>
-            <router-link :to="'/types/edit/' + type.id" class="btn btn-primary">Éditer</router-link>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</template>
-
-<script>
+<script setup>
 import { onMounted, ref } from 'vue';
+import TotalRecords from '../components/TotalRecords.vue';
 
-export default {
-  setup() {
     let types = ref([]);
 
     async function loadTypes() {
@@ -71,11 +46,37 @@ export default {
     console.log(loadTypesCountByType());
     
     console.log(getProductCount());
-    
-    return { types, getProductCount, loadTypesCountByType };
-  }
-}
 </script>
+
+<template>
+  <div class="container mt-5">
+    <h1>Liste des types de produits</h1>
+    <table class="table table-striped table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Nombre de Produits</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="type in types" :key="type.id">
+          <td>{{ type.name }}</td>
+          <td>{{ getProductCount(type.id) }}</td>
+          <td>
+            <router-link :to="'/types/edit/' + type.id" class="btn btn-primary">Éditer</router-link>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <total-records 
+        type="types"
+        :total="types.length"
+        @reload="loadTypes">
+    </total-records>
+  </div>
+</template>
+
 
 <style>
 /* Styles spécifiques au composant */

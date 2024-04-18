@@ -9,6 +9,8 @@ import TypeEdit from '../views/TypeEdit.vue'
 import CustomersList from '../views/CustomersList.vue'
 import CustomerEdit from '../views/CustomerEdit.vue'
 import SigninView from '../views/SigninView.vue'
+import InvoicesList from '@/views/InvoicesList.vue'
+import InvoicesEdit from '@/views/InvoicesEdit.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -63,6 +65,18 @@ const router = createRouter({
       path: '/customers/edit/:id',
       name: 'CustomerEdit',
       component: CustomerEdit,
+      props: true
+    },
+    {
+      path: '/invoices/list',
+      name: 'InvoicesList',
+      component: InvoicesList,
+      props: true
+    },
+     {
+      path: '/invoices/edit/:id',
+      name: 'InvoicesEdit',
+      component: InvoicesEdit,
       props: true
     },
     {

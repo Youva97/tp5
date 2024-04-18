@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container mt-5">
     <h1>Liste des Clients</h1>
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Nom de famille</th>
@@ -36,10 +36,18 @@
         </tr>
       </tbody>
     </table>
+    <total-records 
+        type="clients"
+        :total="customers.length"
+        @reload="loadCustomers">
+    </total-records>
   </div>
 </template>
 
+
+
 <script setup>
+import TotalRecords from '../components/TotalRecords.vue';
 import { onMounted, ref } from 'vue';
 let customers = ref([]);
 

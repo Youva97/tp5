@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
           <a class="navbar-brand" href="#">Youvastano</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -9,7 +9,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <RouterLink class="nav-link" to="/">Accueil</RouterLink>
               </li>
@@ -26,10 +26,13 @@
                 <RouterLink class="nav-link" to="/customers/list">Liste des clients</RouterLink>
               </li>
               <li class="nav-item">
-                <RouterLink class="nav-link" to="/signin">connexion</RouterLink>
+                <RouterLink class="nav-link" to="/invoices/list">Liste des factures</RouterLink>
+              </li>
+              <li class="nav-item">
+                <RouterLink class="nav-link" to="/signin">Connexion</RouterLink>
               </li>
               <li class="nav-item" @click="signout">
-                <a class="nav-link" href="#">deconnexion</a>
+                <a class="nav-link" href="#">Déconnexion</a>
               </li>
             </ul>
           </div>
@@ -42,6 +45,9 @@
     </div>
   </div>
 </template>
+
+
+
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router';

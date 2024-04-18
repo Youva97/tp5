@@ -1,38 +1,50 @@
 <template>
-  <div>
-    <h1>Modification des Utilisateurs</h1>
-    <form @submit.prevent="saveCustomer">
-      <div class="mb-3">
-        <label for="customerName" class="form-label">Nom de Famille</label>
-        <input type="text" class="form-control" id="customerName" v-model="customer.name">
+  <div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-12">
+        <div class="card border-primary">
+          <div class="card-header bg-primary text-white">
+            <h1 class="card-title">{{ isNewProduct ? 'Créer un nouveau client' : 'Modification des clients' }}</h1>
+          </div>
+          <div class="card-body">
+            <form @submit.prevent="saveCustomer">
+              <div class="mb-3">
+                <label for="customerName" class="form-label">Nom de Famille</label>
+                <input type="text" class="form-control" id="customerName" v-model="customer.name">
+              </div>
+              <div class="mb-3">
+                <label for="customerFirsname" class="form-label">Prénom</label>
+                <input type="text" class="form-control" id="customerFirsname" v-model="customer.firstname">
+              </div>
+              <div class="mb-3">
+                <label for="address1" class="form-label">Adresse 1</label>
+                <input type="text" class="form-control" id="address1" v-model="customer.address1">
+              </div>
+              <div class="mb-3">
+                <label for="address2" class="form-label">Adresse 2</label>
+                <input type="text" class="form-control" id="address2" v-model="customer.address2">
+              </div>
+              <div class="mb-3">
+                <label for="zipCode" class="form-label">Code Postal</label>
+                <input type="text" class="form-control" id="zipCode" v-model="customer.zipCode">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" v-model="customer.email">
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Téléphone</label>
+                <input type="phone" class="form-control" id="phone" v-model="customer.phone">
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <button type="button" @click="deleteCustomer" class="btn btn-danger">Supprimer</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="mb-3">
-        <label for="customerFirsname" class="form-label">Prénom</label>
-        <input type="text" class="form-control" id="customerFirsname" v-model="customer.firstname">
-      </div>
-      <div class="mb-3">
-        <label for="address1" class="form-label">Adresse 1</label>
-        <input type="text" class="form-control" id="address1" v-model="customer.address1">
-      </div>
-      <div class="mb-3">
-        <label for="address2" class="form-label">Adresse 2</label>
-        <input type="text" class="form-control" id="address2" v-model="customer.address2">
-      </div>
-      <div class="mb-3">
-        <label for="zipCode" class="form-label">Code Postal</label>
-        <input type="text" class="form-control" id="zipCode" v-model="customer.zipCode">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="email" class="form-control" id="email" v-model="customer.email">
-      </div>
-      <div class="mb-3">
-        <label for="phone" class="form-label">Téléphone</label>
-        <input type="phone" class="form-control" id="phone" v-model="customer.phone">
-      </div>
-      <button type="submit" class="btn btn-primary">Enregistrer</button>
-      <button type="button" @click="deleteCustomer" class="btn btn-danger">Supprimer</button>
-    </form>
+    </div>
   </div>
 </template>
 

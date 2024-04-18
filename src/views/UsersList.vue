@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="container mt-5">
     <h1>Liste des Utilisateurs</h1>
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
       <thead class="thead-dark">
         <tr>
           <th scope="col">Nom de famille</th>
@@ -21,10 +21,16 @@
         </tr>
       </tbody>
     </table>
+    <total-records 
+        type="users"
+        :total="users.length"
+        @reload="loadUsers">
+    </total-records>
   </div>
 </template>
   
   <script setup>
+  import TotalRecords from '../components/TotalRecords.vue';
   import { onMounted, ref } from 'vue';
   
       let users = ref([]);

@@ -1,33 +1,43 @@
 <template>
-  <div>
-    <h1>{{ isNewProduct ? 'Créer un nouveau produit' : 'Modifier le produit' }}</h1>
-    <form @submit.prevent="saveProduct">
-      <div class="form-group mb-3">
-        <label for="productName" class="form-label">Nom du produits</label>
-        <input type="text" class="form-control" id="productName" v-model="product.name" required>
+  <div class="container">
+    <div class="row justify-content-center mt-4">
+      <div class="col-md-12">
+        <div class="card border-primary">
+          <div class="card-header bg-primary text-white">
+            <h1 class="card-title">{{ isNewProduct ? 'Créer un nouveau produit' : 'Modifier le produit' }}</h1>
+          </div>
+          <div class="card-body">
+            <form @submit.prevent="saveProduct">
+              <div class="mb-3">
+                <label for="productName" class="form-label">Nom du produit</label>
+                <input type="text" class="form-control" id="productName" v-model="product.name" required>
+              </div>
+              <div class="mb-3">
+                <label for="price" class="form-label">Prix :</label>
+                <input type="number" id="price" v-model="product.priceHt" required class="form-control">
+              </div>
+              <div class="mb-3">
+                <label for="productDescription" class="form-label">Description</label>
+                <textarea class="form-control" rows="5" id="productDescription" v-model="product.description" required></textarea>
+              </div>
+              <div class="mb-3">
+                <FormSelect label="Type" :options="types" v-model="product.typeId" />
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+                <button type="button" @click="deleteProduct" class="btn btn-danger">Supprimer</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="price" class="form-label">Prix:</label>
-        <input type="number" id="price" v-model="product.priceHt" required class="form-control">
-      </div>
-      <div class="form-group mb-3">
-        <label for="productDescription" class="form-label">Description</label>
-        <textarea class="form-control" rows="5" id="productDescription" v-model="product.description"
-          required></textarea>
-      </div>
-      <div class="form-group mb-3">
-        <label for="productType" class="form-label">Type</label>
-        <select class="form-select form-select-sm" id="productType" v-model="product.typeId" required>
-          <option v-for="type in types" :value="type.id" :key="type.id">{{ type.name }}</option>
-        </select>
-      </div>
-      <button type="submit" class="btn btn-primary">Enregistrer</button>
-      <button type="button" @click="deleteProduct" class="btn btn-danger">Supprimer</button>
-    </form>
+    </div>
   </div>
 </template>
 
+
 <script setup>
+import FormSelect from '@/components/FormSelect.vue';
 import { ref, onMounted } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 
