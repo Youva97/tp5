@@ -9,7 +9,7 @@ import TotalRecords from '../components/TotalRecords.vue';
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c',
+          'Authorization': localStorage.getItem('token'),
         }
       })).json();
 
@@ -27,7 +27,7 @@ import TotalRecords from '../components/TotalRecords.vue';
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c',
+          'Authorization': localStorage.getItem('token'),
         }
       })).json();
       return json.data;

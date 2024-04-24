@@ -51,7 +51,7 @@ async function loadUsers() {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/users/${userId}`, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
+      'Authorization': localStorage.getItem('token')
     }
   });
   user.value = (await response.json()).data;
@@ -64,7 +64,7 @@ async function saveUser() {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
+      'Authorization': localStorage.getItem('token')
     },
     body: JSON.stringify(user.value)
   });
@@ -80,7 +80,7 @@ async function deleteUser() {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
+      'Authorization': localStorage.getItem('token')
     }
   });
   if (response.ok) {

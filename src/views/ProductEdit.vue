@@ -52,7 +52,7 @@ async function loadTypes() {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/types`, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
+      'Authorization': localStorage.getItem('token')
     }
   });
   const data = await response.json();
@@ -63,7 +63,7 @@ async function loadProduct() {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/products/${productId}`, {
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
+      'Authorization': localStorage.getItem('token')
     }
   });
   product.value = (await response.json()).data;
@@ -78,7 +78,7 @@ async function saveProduct() {
     method,
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
+      'Authorization': localStorage.getItem('token')
     },
     body: JSON.stringify(product.value)
   });
@@ -94,7 +94,7 @@ async function deleteProduct() {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'e7fdc34b-2b19-4a1a-bbc5-16460d98717c'
+      'Authorization': localStorage.getItem('token')
     }
   });
   if (response.ok) {

@@ -18,7 +18,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <div class="mb-3">
+    <div>
         <label for="customer"
             class="form-label">{{ label }}</label>
         <select class="form-select"
