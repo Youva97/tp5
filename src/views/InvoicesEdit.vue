@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="card border-primary">
                     <div class="card-header bg-primary text-white">
-                        <h1 class="card-title">{{ isNewProduct ? 'Créer une nouvelle facture' : 'Modifier la facture' }}
+                        <h1 class="card-title">{{ isNewInvoices ? 'Créer une nouvelle facture' : 'Modifier la facture' }}
                         </h1>
                         <button type="button" class="btn btn-sm btn-success" @click="addLine()">Ajouter une
                             ligne</button>
@@ -39,7 +39,7 @@
 
                                 <div class="col-4 d-flex align-items-end">
                                     <button type="button" class="btn btn-sm btn-outline-danger"
-                                        @click="removeLine(indexline)">Effacer la ligne</button>
+                                        @click="removeLine(line.id)">Effacer la ligne</button>
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
@@ -102,7 +102,8 @@ async function loadInvoice() {
         invoice.value = (await response.json()).data;
         lines.value = invoice.value.lines
         console.log(invoice.value);
-        console.log(lines.value);
+        console.log('Invoice loaded:', invoice.value);
+        console.log('Lines:', lines.value);
     } else {
         console.error('Failed to load invoice');
     }
@@ -112,6 +113,7 @@ async function loadInvoice() {
 async function saveInvoice() {
     const method = invoiceId ? 'PUT' : 'POST';
     const url = invoiceId ? `${import.meta.env.VITE_API_URL}/v1/invoices/${invoiceId}` : `${import.meta.env.VITE_API_URL}/v1/invoices`;
+    invoice.value.lines = lines.value;
     const response = await fetch(url, {
         method,
         headers: {
@@ -143,37 +145,11 @@ async function deleteInvoice() {
 }
 
 async function addLine() {
-/*     const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/invoices/${invoiceId}/lines`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token')
-        }
-    });
-    if (response.ok) {
-        const addedLine = await response.json();
-        lines.value.push(addedLine.data);
-        console.log('Line added successfully');
-    } else {
-        console.error('Failed to add invoice line');
-    } */
     lines.value.push({productId: 0 , quantity: 1, priceHt: 50})
 }
 
-async function removeLine() {
-/*     const response = await fetch(`${import.meta.env.VITE_API_URL}/v1/invoices/${invoiceId}/lines/${lineId}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': localStorage.getItem('token')
-        }
-    });
-    if (response.ok) {
-        lines.value = lines.value.filter(line => line.id !== lineId); // Filtrer la ligne supprimée du tableau local
-        console.log('Line removed successfully');
-    } else {
-        console.error('Failed to delete invoicelines');
-    } */
+async function removeLine(lineId) {
+    lines.value = lines.value.filter(line => line.id !== lineId);
 }
 
 

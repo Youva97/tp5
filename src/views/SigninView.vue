@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+import { useLoggedUserStore } from '@/stores/loggedUser';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -24,6 +25,7 @@ const router = useRouter();
 const login = ref('');
 const password = ref('');
 let token = localStorage.getItem("token");
+const loggedUserStore = useLoggedUserStore();
 
 async function signin() {
   if (token) {
@@ -49,10 +51,11 @@ async function signin() {
         return;
     }
     if (json.data.token) {
-        localStorage.setItem('token', json.data.token);
-        router.push('/');
+      loggedUserStore.logIn(json.data);
+      router.push('/');
     }
     console.log(token);
 }
+
 
 </script>
